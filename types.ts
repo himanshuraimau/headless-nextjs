@@ -13,3 +13,16 @@ export type HeroQuery = {
     }[]
 }
 }
+
+export type LogoWallQuery = {
+        assetCollection: {
+            items :{
+                url: string,
+                width: number,
+                height: number,
+                title: string
+            }[]
+        }
+
+
+}
