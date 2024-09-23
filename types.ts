@@ -28,15 +28,18 @@ export type LogoWallQuery = {
 }
 
 export type HeaderNavigationQuery = {
-    navigationCollection:{
-        items: {
-          name: string
-          linksCollection: {
-            items :{
-              label: string
-              link: string
-            }[]
-          }
-        }[]
-      }
-}
+  data: {
+    navigationCollection: {
+      items: {
+        name: string;
+        linksCollection: {
+          items: {
+            label: string;
+            link: string;
+          }[];
+        };
+      }[];
+    };
+  };
+};
+

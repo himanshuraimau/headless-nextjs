@@ -1,14 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
-
-type Link = {
-  link: string;
-  label: string;
-}
+import { Link as LinkType } from './header-server'
 
 type HeaderProps = {
-  links?: Link[];
+  links: LinkType[];
 }
 
 export default function Header({ links = [] }: HeaderProps) {
@@ -25,16 +23,19 @@ export default function Header({ links = [] }: HeaderProps) {
           <nav className="hidden md:flex md:grow">
             {/* Desktop menu links */}
             <ul className="flex grow justify-center flex-wrap items-center">
-              {links && links.length > 0 && links.map((link, index) => (
+              {links.map((link) => (
                 <li key={link.label}>
                   <Link
-                    className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
+                   className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out"
                     href={link.link}
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
+               <li>
+            <Link className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" href="/about">About</Link>
+            </li>
             </ul>
           </nav>
 
