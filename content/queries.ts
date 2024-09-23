@@ -1,6 +1,31 @@
 import {contentGqlFetcher} from "./fetch"
-import {HeroQuery,LogoWallQuery} from "../types"
+import {HeroQuery,LogoWallQuery,HeaderNavigationQuery} from "../types"
 
+
+
+export const getContentForHeaderNav = async()=>{
+    const query = `#graphql
+       query NavigationCollection {
+    navigationCollection(where: { name: "Header" }) {
+        items {
+            name
+            linksCollection {
+                items {
+                    label
+                    link
+                }
+            }
+        }
+    }
+}
+    `
+    const data = await contentGqlFetcher<HeaderNavigationQuery>({query})
+
+    if(!data){
+        return undefined
+    }
+    return data;
+}
 
 export const getContentForLogoWall = async()=>{
     const query = `#graphql
@@ -21,7 +46,7 @@ export const getContentForLogoWall = async()=>{
     const data = await contentGqlFetcher<LogoWallQuery>(
         {
             query,
-            
+
         }
     )
 
